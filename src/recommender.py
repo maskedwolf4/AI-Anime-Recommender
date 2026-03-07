@@ -1,4 +1,4 @@
-from langchain_community.chains import PebbloRetrievalQA
+from langchain_classic.chains import RetrievalQA
 from langchain_groq import ChatGroq
 from src.prompt_template import get_anime_prompt
 
@@ -7,7 +7,7 @@ class AnimeRecommender:
          self.llm = ChatGroq(api_key=api_key, model=model_name, temperature=0)
          self.prompt = get_anime_prompt()
          
-         self.qa_chain = PebbloRetrievalQA.from_chain_type(
+         self.qa_chain = RetrievalQA.from_chain_type(
              llm=self.llm,
              chain_type="stuff",
              retriever = retriever,
